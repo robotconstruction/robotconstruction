@@ -49,6 +49,7 @@ float gestureLR = 0;
 float gestureOffSetMax = 15;
 float gestureSpeed = 2;
 int STAND_STILL = 0;
+extern double WALK_LIFT;
 
 const char* UPPER_IP = "";
 // const char* UPPER_RASP4B_IP = "";
@@ -140,12 +141,21 @@ void serialCtrl(){
         }
       }
 
+
+
       else if(docReceive["var"] == "buzzer"){
         switch(val){
           case 0: digitalWrite(BUZZER, HIGH);break;
           case 1: digitalWrite(BUZZER, LOW);break;
         }
       }
+
+      //modified 4/2/2024, add a command to change lift height
+      else if(docReceive["var"] == "Change_Clearance"){
+        double D_val = val;
+        WALK_LIFT = D_val;
+      }
+
 
       else if(docReceive["var"] == "r4bIp"){
         UPPER_RASP4B_IP = docReceive["ip"].as<String>();
