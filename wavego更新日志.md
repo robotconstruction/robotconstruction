@@ -1,6 +1,6 @@
 # 更新日志
 
-## 2024/2/2
+## Feb/2/2024
 
 ### Shihming Lin: 
 
@@ -49,3 +49,22 @@
 ### ESP32 下位机
 1. 下位机修改 WAVEGO.ino : 增加串口接受信息指令 r4bIp, r4bSsid, 接受来自上位机ip, ssid等信息
 2. 下位机修改 InitConfig.h : 修改oled显示界面(1. 页面3显示上位机wifi ssid&ip; 2. 页面4显示下位机wifi ip&status)
+
+
+## Feb/5/2024
+
+### Shihming Lin: 
+
+### Rpi 上位机
+
+1. 上位机删除 selfIpSender.py : 
+2. 上位机增加 autoWifiConnectIpSenderHeadless.py & autoWifiConnectIpSender.py(测试用), 将 autoWifiConnectIpSenderHeadless 添加至开机自启服务
+		a. 通过窗口(pyserial)从raspberrypi4b(上位机, upper computer, r4b)向esp32(下位机, lower computer)发送上位机ssid和ip. 
+		b. 增加串口发送信息指令 r4bIp, r4bSsid.  
+		c. 开机时连接cornell-visitor wifi并使用selenium打开浏览器执行登录操作. 成功后返回可以联网的ip.
+		
+```
+	开机自启服务添加流程
+	命令行: sudo crontab -e
+	最后一行添加: @reboot /usr/bin/python3 /path/to/your/my_script.py
+```
