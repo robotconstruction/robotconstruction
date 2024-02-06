@@ -1,0 +1,8 @@
+AFTER BOOT!
+open terminal and run
+nohup python3 /home/pi/WAVEGO/RPi/autoWifiConnectIpSenderHeadless.py &
+Then change WIFI to Cornell-Visitor
+
+When you connect back via VNC viewer
+you can Ctrl+c or close on that terminal.
+nohup + & can ignore the close or terminate operation
