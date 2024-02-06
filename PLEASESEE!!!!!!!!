@@ -1,0 +1,6 @@
+AFTER BOOT!
+open terminal and run
+./runafterboot.sh
+
+Before REBOOT or SHUT DOWN
+sudo ./update_wpa_supplicant.sh
